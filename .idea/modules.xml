@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/a-begriffe/a-begriffe.iml" filepath="$PROJECT_DIR$/a-begriffe/a-begriffe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/a-guessnumber/a-guessnumber.iml" filepath="$PROJECT_DIR$/a-guessnumber/a-guessnumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/b-dogs/b-dogs.iml" filepath="$PROJECT_DIR$/b-dogs/b-dogs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/b-foxes/b-foxes.iml" filepath="$PROJECT_DIR$/b-foxes/b-foxes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/c-4gewinnt/c-4gewinnt.iml" filepath="$PROJECT_DIR$/c-4gewinnt/c-4gewinnt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/intellij-workspace-murad318.iml" filepath="$PROJECT_DIR$/.idea/intellij-workspace-murad318.iml" />
+    </modules>
+  </component>
+</project>
