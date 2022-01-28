@@ -1,5 +1,7 @@
 package at.appdevs.basics;
 
+import java.math.BigDecimal;
+
 public class Main {
 
     public static int[][] DIAGONAL_TOP_LEFT_BOTTOM_RIGHT = {
@@ -42,13 +44,12 @@ public class Main {
 
         Game game = new Game();
 
-        game.setBoard(createTestBoard(DIAGONAL_TOP_LEFT_BOTTOM_RIGHT));
 
-        System.err.println(game.testForWinnerStoneAt(Color.RED, 2, 1) ? "Test ok" : "Test nok");
         // game.test();
 
 //        game.startGame();
 
+        game.checkForDiagonallyConnectedStonesTopRightBottomLeft();
 
 
     }

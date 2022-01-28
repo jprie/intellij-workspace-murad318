@@ -6,22 +6,8 @@ public class Game {
 
     public static final Scanner scanner = new Scanner(System.in);
     private Board board = new Board();
-    private Player[] players = new Player[2];
+    private final Player[] players = new Player[2];
     private Player currentPlayer;
-
-    public void createStones() {
-
-        Stone stone = new Stone(Color.RED);
-    }
-
-    public void test() {
-
-        // Setze ein Stone auf das Spielfeld setze
-        board.setStoneAtPosition(2, 2, new Stone(Color.RED));
-        board.setStoneAtPosition(3, 3, new Stone(Color.YELLOW));
-        printBoard();
-
-    }
 
     public void setBoard(Board board) {
         this.board = board;
@@ -29,8 +15,6 @@ public class Game {
 
     // Der Spielablauf
     public void startGame() {
-
-
 
         for (int i=0; i< players.length; i++) {
             // Pro Spieler: gibt Namen ein UND bekommt eine Farbe
@@ -53,12 +37,12 @@ public class Game {
             currentPlayer = players[round % 2];
             System.out.println("Geben Sie eine Spalte an, wo ihr Stein eingeworfen werden soll");
             int column = scanner.nextInt()-1;
-            int row;
-            if ((row = throwStoneIntoColumn(column)) == -1) {
+
+            if (!throwStoneIntoColumn(column)) {
                 System.out.println("Spalte bereits voll!");
             } else {
                 // Stein erfolgreich gelegt
-                if (checkStoneWinsAt(row, column)) {
+                if (checkCurrentPlayerWins()) {
                     System.out.println("Hurray you won!!");
                     doStop = true;
                 }
@@ -85,85 +69,78 @@ public class Game {
         return playerWins;
     }
 
-    private boolean checkStoneWinsAt(int row, int col) {
 
-        boolean playerWins;
+    public boolean checkForDiagonallyConnectedStonesTopLeftBottomRight() {
 
-        playerWins = checkForHorizontallyConnectedStones(row, col);
-        playerWins |= checkForVerticallyConnectedStones(row, col);
-        playerWins |= checkForDiagonallyConnectedStonesTopLeftBottomRight(row, col);
-        playerWins |= checkForDiagonallyConnectedStonesTopRightBottomLeft(row, col);
-
-        return playerWins;
-    }
-
-    private boolean checkForDiagonallyConnectedStonesTopLeftBottomRight() {
-
-        for (int i = 0; i < ((Board.BOARD_WIDTH + Board.BOARD_HEIGHT) - 1); i++) {
-
-            int row = i % Board.BOARD_WIDTH;
-            int col = i<Board.BOARD_WIDTH ? i : 0;
-            int countStones = 0;
-            while (row < Board.BOARD_HEIGHT && col < Board.BOARD_WIDTH) {
-
-                Stone stone = board.getStoneAtPosition(row, col);
-                if (stone != null && stone.getColor() == currentPlayer.getColor()) {
-                    countStones++;
-                    if (countStones == 4) {
-                        return true;
-                    }
-                } else {
-                    countStones = 0;
-                }
-
-                // go from top-left to bottom-right
-                row++;
-                col++;
-            }
-        }
-
-        return false;
-    }
-
-    private boolean checkForDiagonallyConnectedStonesTopRightBottomLeft() {
-
-        for (int i = Board.BOARD_WIDTH+Board.BOARD_HEIGHT-1; i>=0; i--) {
-
-            int row = i > Board.BOARD_WIDTH ? i % Board.BOARD_WIDTH : 0;
-            int col = i >= Board.BOARD_WIDTH ? Board.BOARD_WIDTH-1 : i;
-            int countStones = 0;
-            while (row < Board.BOARD_HEIGHT && col >= 0) {
-
-//                System.out.println("[" + row + ", " + col + "]");
-                Stone stone = board.getStoneAtPosition(row, col);
-                if (stone != null && stone.getColor() == currentPlayer.getColor()) {
-                    countStones++;
-                    if (countStones == 4) {
-                        return true;
-                    }
-                } else {
-                    countStones = 0;
-                }
-
-                // go from top-right to bottom-left
-                row++;
-                col--;
-            }
-        }
-
-        return false;
-    }
-
-//    private boolean checkCurrentPlayerWinsDiagonalFromLeftUp() {
+//        for (int i=0; i<Board.BOARD_WIDTH; i++) {
 //
-//        // überprüfe nur Farbe des currentPlayer
-//        for (int i=0; i<Board.BOARD_WIDTH-1; i++) {
-//            int col=i+3<Board.BOARD_WIDTH ? i+3 : Board.BOARD_WIDTH-1;
-//            int row = i<=Board.BOARD_HEIGHT-2? 0:i-Board.BOARD_HEIGHT+2;
+//            // Bezugspunkt festgelegt
+//            int rowIndex = 0;
+//            int colIndex = i;
+
+        for (int i=0; i<Board.BOARD_WIDTH+2; i++) {
+
+            // Bezugspunkt festgelegt
+            int rowIndex = i < Board.BOARD_WIDTH ? 0 : i % Board.BOARD_WIDTH-1;
+            int colIndex = i < Board.BOARD_WIDTH ? i : 0;
+
+            // Diagonal nach rechts-unten
+            while (rowIndex < Board.BOARD_WIDTH && colIndex < Board.BOARD_HEIGHT) {
+
+                System.out.println("[" + rowIndex + ", " + colIndex + "]");
+
+                // copy-paste counter Logik
+
+                rowIndex++;
+                colIndex++;
+            }
+
+        }
+
+        return false;
+    }
+
+    public boolean checkForDiagonallyConnectedStonesTopRightBottomLeft() {
+
+//        for (int i=Board.BOARD_WIDTH-1; i>=0; i--) {
+
+        // Bezugspunkt festgelegt
+//            int rowIndex = 0;
+//            int colIndex = i;
+
+        // Lösung, damit alle Diagonalen getestet werden
+        for (int i=(Board.BOARD_WIDTH-1)+2; i>=0; i--) {
+
+            int rowIndex = i > Board.BOARD_WIDTH-1 ? i % (Board.BOARD_WIDTH-1) : 0;
+            int colIndex = i > Board.BOARD_WIDTH-1 ? Board.BOARD_WIDTH-1 : i;
+
+
+            // Diagonal nach links-unten
+            while (rowIndex < Board.BOARD_HEIGHT && colIndex >= 0) {
+
+
+                System.out.println("[" + rowIndex + ", " + colIndex + "]");
+
+                // copy-paste counter Logik
+
+                rowIndex++;
+                colIndex--;
+            }
+
+        }
+        return  false;
+    }
+
+//    private boolean checkForDiagonallyConnectedStonesTopRightBottomLeft() {
+//
+//        for (int i = Board.BOARD_WIDTH+Board.BOARD_HEIGHT-1; i>=0; i--) {
+//
+//            int row = i > Board.BOARD_WIDTH ? i % Board.BOARD_WIDTH : 0;
+//            int col = i >= Board.BOARD_WIDTH ? Board.BOARD_WIDTH-1 : i;
 //            int countStones = 0;
+//            while (row < Board.BOARD_HEIGHT && col >= 0) {
 //
-//            while(row < Board.BOARD_HEIGHT && col>=0){
-//                System.out.println("[" + row + ", " + col + "]");
+////                System.out.println("[" + row + ", " + col + "]");
 //                Stone stone = board.getStoneAtPosition(row, col);
 //                if (stone != null && stone.getColor() == currentPlayer.getColor()) {
 //                    countStones++;
@@ -173,10 +150,13 @@ public class Game {
 //                } else {
 //                    countStones = 0;
 //                }
-//                col--;
+//
+//                // go from top-right to bottom-left
 //                row++;
+//                col--;
 //            }
 //        }
+//
 //        return false;
 //    }
 
@@ -223,6 +203,20 @@ public class Game {
         }
 
         return false;
+    }
+
+// Optimierte Variante, sodass immer nur die Zeile, Spalte, Diagonale/n
+    // getestet werden, wo der letzte Stein eingeworfen wurde.
+    private boolean checkStoneWinsAt(int row, int col) {
+
+        boolean playerWins;
+
+        playerWins = checkForHorizontallyConnectedStones(row, col);
+        playerWins |= checkForVerticallyConnectedStones(row, col);
+        playerWins |= checkForDiagonallyConnectedStonesTopLeftBottomRight(row, col);
+        playerWins |= checkForDiagonallyConnectedStonesTopRightBottomLeft(row, col);
+
+        return playerWins;
     }
 
     private boolean checkForHorizontallyConnectedStones(int row, int col) {
@@ -323,17 +317,17 @@ public class Game {
 
     // Gibt true, wenn Stone eingeworfen werden konnte
     // Gibt false, wenn nicht!
-    private int throwStoneIntoColumn(int column) {
+    private boolean throwStoneIntoColumn(int column) {
 
         int row = Board.BOARD_HEIGHT-1;
         while (row >= 0)  {
             if (board.getStoneAtPosition(row, column) == null) {
                 board.setStoneAtPosition(row, column, new Stone(currentPlayer.getColor()));
-                return row;
+                return true;
             }
             row--;
         }
-        return -1;
+        return false;
     }
 
     public void printBoard() {
