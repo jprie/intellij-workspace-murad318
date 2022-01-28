@@ -1,6 +1,4 @@
-package at.appdevs.basics;
-
-import java.util.Arrays;
+package at.appdevs.basics.app;
 
 public class Board {
 

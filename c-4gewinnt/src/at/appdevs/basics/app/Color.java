@@ -1,4 +1,4 @@
-package at.appdevs.basics;
+package at.appdevs.basics.app;
 
 public enum Color {
     RED("r"), YELLOW("y");
