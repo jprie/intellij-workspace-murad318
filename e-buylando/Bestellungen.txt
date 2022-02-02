@@ -1,0 +1,15 @@
+Bluse;Esprite;Kleidung;99,990000;3,000000;Katharina;Prokovic;w;12.12.2021;open
+Kette Rosegold;Only;Schmuck;49,990000;4,500000;Martin;Lang;m;23.12.2021;payed by cc
+FlipFlops;Nike;Schuhe;25,000000;2,500000;Anja;Gruber;w;23.12.2021;open
+Kette Rosegold;Only;Schmuck;49,990000;4,500000;Michael;Zadic;m;01.12.2021;payed by cash
+T-Shirt;Nike;Kleidung;79,990000;7,500000;Martin;Lang;m;23.12.2021;payed by cc
+Jeans;Levis;Kleidung;129,990000;8,000000;Michael;Zadic;m;24.12.2021;open
+Jeans;s.Oliver;Kleidung;79,990000;7,500000;Lukas;Pöchl;d;29.11.2021;payed by cc
+Trainingsanzug;Nike;Kleidung;45,990000;9,500000;Lukas;Pöchl;d;24.12.2021;open
+T-Shirt;Nike;Kleidung;79,990000;7,500000;Lukas;Pöchl;d;02.01.2022;payed by cc
+Bluse;Esprite;Kleidung;99,990000;3,000000;Michael;Zadic;m;23.01.2021;open
+Jeans;Levis;Kleidung;129,990000;8,000000;Michael;Zadic;m;23.01.2021;open
+Jeans;s.Oliver;Kleidung;79,990000;7,500000;Michael;Zadic;m;23.01.2021;open
+FlipFlops;Nike;Schuhe;25,000000;2,500000;Katharina;Prokovic;w;10.01.2021;open
+Sneaker Superstar;Addidas;Schuhe;69,990000;6,500000;Anja;Gruber;w;24.12.2021;open
+Sneaker Superstar;Addidas;Schuhe;69,990000;6,500000;Katharina;Prokovic;w;23.12.2021;open
