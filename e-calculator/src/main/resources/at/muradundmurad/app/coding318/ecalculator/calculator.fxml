@@ -6,53 +6,49 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="at.muradundmurad.app.coding318.ecalculator.CalculatorController">
+<VBox alignment="CENTER" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.muradundmurad.app.coding318.ecalculator.CalculatorController">
 
    <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
-   <Label fx:id="displayLabel" alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: lightblue;"
-          styleClass="display" stylesheets="@styles.css" text="Label">
+   <Label fx:id="displayLabel" alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: lightblue;" styleClass="display" stylesheets="@styles.css" text="Label">
       <VBox.margin>
-         <Insets/>
+         <Insets />
       </VBox.margin>
       <padding>
-         <Insets right="5.0"/>
+         <Insets right="5.0" />
       </padding>
    </Label>
    <HBox>
       <children>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="1"/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="2"/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="3"/>
-         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="+"/>
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="1" />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="2" />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="3" />
+         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="+" />
       </children>
    </HBox>
    <HBox>
       <children>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="4"/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="5"/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="6"/>
-         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="-"/>
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="4" />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="5" />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="6" />
+         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="-" />
       </children>
    </HBox>
    <HBox>
       <children>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="7"/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="8"/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="9"/>
-         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="*"/>
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="7" />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="8" />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="9" />
+         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="*" />
       </children>
    </HBox>
    <HBox>
       <children>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="."/>
-         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="0"/>
-         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" styleClass="equals-button"
-                 text="="/>
-         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="/"/>
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="." />
+         <Button mnemonicParsing="false" onAction="#onNumberClick" prefWidth="30.0" text="0" />
+         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" styleClass="equals-button" text="=" />
+         <Button mnemonicParsing="false" onAction="#onOperatorClick" prefWidth="30.0" text="/" />
       </children>
    </HBox>
 </VBox>
