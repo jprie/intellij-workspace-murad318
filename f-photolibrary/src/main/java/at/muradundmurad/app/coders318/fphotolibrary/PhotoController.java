@@ -65,22 +65,38 @@ public class PhotoController {
         String comment = commentTextArea.getText();
 
         if (!isValidInput(title, pathToFile, date, photographer, comment)) {
-            logger.error("Photo not added");
+//            logger.error("Photo not added");
+            System.out.println("photo not added");
             return;
         }
 
-        Photo photo = null;
+        // Lese bytes aus gewählter Foto-Datei ein
+        Path path = Path.of(pathToFile);
         try {
-            byte[] imageBytes = Files.newInputStream(Path.of(pathToFile)).readAllBytes();
-            photo = new Photo(title, photographer, date, pathToFile, comment, imageBytes);
+            InputStream inputStream = Files.newInputStream(path);
+            byte[] imageBytes = inputStream.readAllBytes();
+            Photo photo = new Photo(title, photographer, date, pathToFile, comment, imageBytes);
+            PhotoLibrary.photos.add(photo);
+            System.out.println("Added photo: " + photo);
         } catch (IOException e) {
-            System.err.println("No photo selected");
+            e.printStackTrace();
         }
 
-        if (photo != null) {
-            photos.add(photo);
-            logger.info("Added photo: " + photo);
-        }
+
+//
+//
+//        Photo photo = null;
+//        try {
+//            byte[] imageBytes = Files.newInputStream(Path.of(pathToFile)).readAllBytes();
+//            photo = new Photo(title, photographer, date, pathToFile, comment, imageBytes);
+//        } catch (IOException e) {
+//            System.err.println("No photo selected");
+//        }
+//
+//        if (photo != null) {
+//            photos.add(photo);
+//            logger.info("Added photo: " + photo);
+//        }
 
     }
 
@@ -89,7 +105,7 @@ public class PhotoController {
         if (!title.isBlank() && !pathToFile.isBlank() && date != null && photographer != null) {
             return true;
         }
-        logger.debug("Validation: {}, {}, {}, {}, {}", title, date, photographer, pathToFile, comment);
+//        logger.debug("Validation: {}, {}, {}, {}, {}", title, date, photographer, pathToFile, comment);
         return false;
     }
 
@@ -101,26 +117,27 @@ public class PhotoController {
         commentTextArea.setText("");
         photographerChoiceBox.setValue(null);
         imageView.setImage(null);
-        logger.info("Cleared form");
+//        logger.info("Cleared form");
     }
 
     @FXML
     private void initialize() {
 
-        photographerChoiceBox.setItems(FXCollections.observableList(PhotoLibrary.photographers));
-        photographerChoiceBox.setConverter(new StringConverter<Photographer>() {
-            @Override
-            public String toString(Photographer photographer) {
-                return photographer == null ? "" : photographer.getFirstName() + " " + photographer.getLastName();
-            }
+        photographerChoiceBox.setItems(PhotoLibrary.photographers);
 
-            @Override
-            public Photographer fromString(String s) {
-                return null;
-            }
-        });
+//        photographerChoiceBox.setConverter(new StringConverter<Photographer>() {
+//            @Override
+//            public String toString(Photographer photographer) {
+//                return photographer == null ? "" : photographer.getFirstName() + " " + photographer.getLastName();
+//            }
+//
+//            @Override
+//            public Photographer fromString(String s) {
+//                return null;
+//            }
+//        });
         // Tabelle
-        photoTableView.setItems(photos);
+        photoTableView.setItems(PhotoLibrary.photos);
         titleColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Photo, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Photo, String> photoStringCellDataFeatures) {
@@ -157,19 +174,31 @@ public class PhotoController {
     private void onFileChooserButtonClick(ActionEvent actionEvent) {
 
         FileChooser fileChooser = new FileChooser();
-
+        // Öffnet einen Öffnen-Dialog
         File file = fileChooser.showOpenDialog(getCurrentStage());
 
+        // Bild-Datei im ImageView anzeigen
         try {
             imageView.setImage(new Image(new FileInputStream(file)));
             pathToFileTextField.setText(file.getAbsolutePath());
-        } catch (FileNotFoundException e) {
-            logger.error("File not found: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("File " + file.getAbsolutePath() + " not found");
         }
+//        FileChooser fileChooser = new FileChooser();
+//
+//        File file = fileChooser.showOpenDialog(getCurrentStage());
+//
+//        try {
+//            imageView.setImage(new Image(new FileInputStream(file)));
+//            pathToFileTextField.setText(file.getAbsolutePath());
+//        } catch (FileNotFoundException e) {
+//            logger.error("File not found: " + file.getAbsolutePath());
+//        }
     }
 
+    // Liefert die Stage an die Sie den Dialog anhängen wollen
     private Stage getCurrentStage() {
 
-        return (Stage) imageView.getScene().getWindow();
+        return (Stage) titleTextField.getScene().getWindow();
     }
 }

@@ -17,7 +17,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.muradundmurad.app.coders318.fphotolibrary.PhotoController">
    <items>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
@@ -72,6 +71,7 @@
                <children>
                   <TextField fx:id="pathToFileTextField" promptText="Datei" />
                   <Button mnemonicParsing="false" onAction="#onFileChooserButtonClick" text="Datei..." />
+                  <TextField />
                </children>
             </HBox>
             <DatePicker fx:id="datePicker" promptText="Datum" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -91,7 +91,7 @@
             </ChoiceBox>
             <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <image>
-                  <Image url="@../../../../../../../../../../../CloudStation/Geschäftlich/JavaKurse/Murad%20-%20Applikationsentwickler/Resources/PhotoResources/IMG_5199.jpg" />
+                  <Image url="file:/Users/johannespriebsch/Desktop/intellij-workspace-murad318/f-photolibrary/src/main/resources/at/muradundmurad/app/coders318/fphotolibrary/images/IMG_4404.jpg" />
                </image>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
