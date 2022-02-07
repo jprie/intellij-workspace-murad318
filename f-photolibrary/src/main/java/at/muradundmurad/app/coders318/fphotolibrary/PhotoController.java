@@ -1,12 +1,9 @@
 package at.muradundmurad.app.coders318.fphotolibrary;
 
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,9 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Callback;
-import javafx.util.StringConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,8 +46,7 @@ public class PhotoController {
     @FXML
     private TableColumn<Photo, Integer> sizeColumn;
 
-    private ObjectProperty<Photo> selectedPhoto = new SimpleObjectProperty<>();
-    private ObservableList<Photo> photos = FXCollections.observableArrayList();
+    private final ObjectProperty<Photo> selectedPhoto = new SimpleObjectProperty<>();
 
 
     @FXML
@@ -65,7 +59,7 @@ public class PhotoController {
         String comment = commentTextArea.getText();
 
         if (!isValidInput(title, pathToFile, date, photographer, comment)) {
-//            logger.error("Photo not added");
+            logger.error("Photo not added");
             System.out.println("photo not added");
             return;
         }
@@ -82,22 +76,6 @@ public class PhotoController {
             e.printStackTrace();
         }
 
-
-//
-//
-//        Photo photo = null;
-//        try {
-//            byte[] imageBytes = Files.newInputStream(Path.of(pathToFile)).readAllBytes();
-//            photo = new Photo(title, photographer, date, pathToFile, comment, imageBytes);
-//        } catch (IOException e) {
-//            System.err.println("No photo selected");
-//        }
-//
-//        if (photo != null) {
-//            photos.add(photo);
-//            logger.info("Added photo: " + photo);
-//        }
-
     }
 
     private boolean isValidInput(String title, String pathToFile, LocalDate date, Photographer photographer, String comment) {
@@ -105,7 +83,7 @@ public class PhotoController {
         if (!title.isBlank() && !pathToFile.isBlank() && date != null && photographer != null) {
             return true;
         }
-//        logger.debug("Validation: {}, {}, {}, {}, {}", title, date, photographer, pathToFile, comment);
+        logger.debug("Validation: {}, {}, {}, {}, {}", title, date, photographer, pathToFile, comment);
         return false;
     }
 
@@ -117,57 +95,7 @@ public class PhotoController {
         commentTextArea.setText("");
         photographerChoiceBox.setValue(null);
         imageView.setImage(null);
-//        logger.info("Cleared form");
-    }
-
-    @FXML
-    private void initialize() {
-
-        photographerChoiceBox.setItems(PhotoLibrary.photographers);
-
-//        photographerChoiceBox.setConverter(new StringConverter<Photographer>() {
-//            @Override
-//            public String toString(Photographer photographer) {
-//                return photographer == null ? "" : photographer.getFirstName() + " " + photographer.getLastName();
-//            }
-//
-//            @Override
-//            public Photographer fromString(String s) {
-//                return null;
-//            }
-//        });
-        // Tabelle
-        photoTableView.setItems(PhotoLibrary.photos);
-        titleColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Photo, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Photo, String> photoStringCellDataFeatures) {
-                return new SimpleStringProperty(photoStringCellDataFeatures.getValue().title());
-            }
-        });
-
-        photographerColumn.setCellValueFactory((dataFeatures) -> createPhotographerName(dataFeatures.getValue().photographer()));
-
-        dateColumn.setCellValueFactory((dataFeatures) -> new SimpleObjectProperty<>(dataFeatures.getValue().date()));
-
-        sizeColumn.setCellValueFactory((dataFeatures) -> new SimpleObjectProperty<Integer>(dataFeatures.getValue().imageBytes().length));
-
-        photoTableView.getSelectionModel().selectedItemProperty().addListener((o, ov, nv) -> selectedPhoto.set(nv));
-
-        selectedPhoto.addListener((o, ov, nv) -> fillForm(nv));
-    }
-
-    private void fillForm(Photo photo) {
-
-        titleTextField.setText(photo.title());
-        photographerChoiceBox.setValue(photo.photographer());
-        datePicker.setValue(photo.date());
-        pathToFileTextField.setText(photo.pathToFile());
-        commentTextArea.setText(photo.comment());
-        imageView.setImage(new Image(new ByteArrayInputStream(photo.imageBytes())));
-    }
-
-    private ObservableValue<String> createPhotographerName(Photographer photographer) {
-        return new SimpleObjectProperty<>(photographer.getFirstName() + " " + photographer.getLastName());
+        logger.info("Cleared form");
     }
 
     @FXML
@@ -184,16 +112,6 @@ public class PhotoController {
         } catch (IOException e) {
             System.err.println("File " + file.getAbsolutePath() + " not found");
         }
-//        FileChooser fileChooser = new FileChooser();
-//
-//        File file = fileChooser.showOpenDialog(getCurrentStage());
-//
-//        try {
-//            imageView.setImage(new Image(new FileInputStream(file)));
-//            pathToFileTextField.setText(file.getAbsolutePath());
-//        } catch (FileNotFoundException e) {
-//            logger.error("File not found: " + file.getAbsolutePath());
-//        }
     }
 
     // Liefert die Stage an die Sie den Dialog anhängen wollen
@@ -201,4 +119,20 @@ public class PhotoController {
 
         return (Stage) titleTextField.getScene().getWindow();
     }
+
+
+    @FXML
+    private void initialize() {
+
+        Path pathToImages = Path.of("f-photolibrary/src/main/resources/at/muradundmurad/app/coders318/fphotolibrary/images");
+        try {
+            imageView.setImage(new Image(Files.newInputStream(pathToImages.resolve("IMG_4404.jpg"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        photographerChoiceBox.setItems(PhotoLibrary.photographers);
+
+    }
+
+
 }
