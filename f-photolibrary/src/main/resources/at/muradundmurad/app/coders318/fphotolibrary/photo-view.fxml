@@ -5,6 +5,9 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -13,88 +16,101 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.muradundmurad.app.coders318.fphotolibrary.PhotoController">
-   <columnConstraints>
-      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="100.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-   </rowConstraints>
-   <children>
-      <Label text="Titel">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="Fotograf" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="Datum" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="Datei" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="Kommentar" GridPane.rowIndex="4">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Label>
-      <TextField fx:id="titleTextField" promptText="Titel" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </TextField>
-      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
+
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.muradundmurad.app.coders318.fphotolibrary.PhotoController">
+   <items>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <TextField fx:id="pathToFileTextField" promptText="Datei" />
-            <Button mnemonicParsing="false" onAction="#onFileChooserButtonClick" text="Datei..." />
+            <Label text="Titel">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Fotograf" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Datum" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Datei" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Kommentar" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="titleTextField" promptText="Titel" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <TextField fx:id="pathToFileTextField" promptText="Datei" />
+                  <Button mnemonicParsing="false" onAction="#onFileChooserButtonClick" text="Datei..." />
+               </children>
+            </HBox>
+            <DatePicker fx:id="datePicker" promptText="Datum" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <TextArea fx:id="commentTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Kommentar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </TextArea>
+            <ChoiceBox fx:id="photographerChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </ImageView>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onAddButtonClick" text="Hinzufügen" />
+                  <Button mnemonicParsing="false" onAction="#onClearButtonClick" text="Löschen" />
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </HBox>
          </children>
-      </HBox>
-      <DatePicker fx:id="datePicker" promptText="Datum" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </DatePicker>
-      <TextArea fx:id="commentTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Kommentar" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </TextArea>
-      <ChoiceBox fx:id="photographerChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </ChoiceBox>
-      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </ImageView>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <children>
-            <Button mnemonicParsing="false" onAction="#onAddButtonClick" text="Hinzufügen" />
-            <Button mnemonicParsing="false" onAction="#onClearButtonClick" text="Löschen" />
-         </children>
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </HBox>
-   </children>
-</GridPane>
+      </GridPane>
+      <TableView fx:id="photoTableView">
+        <columns>
+          <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Titel" />
+          <TableColumn fx:id="photographerColumn" prefWidth="75.0" text="Fotograf" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Datum" />
+            <TableColumn fx:id="sizeColumn" prefWidth="75.0" text="Größe" />
+        </columns>
+      </TableView>
+   </items>
+</SplitPane>

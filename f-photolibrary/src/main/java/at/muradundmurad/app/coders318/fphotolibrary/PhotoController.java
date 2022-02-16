@@ -132,6 +132,43 @@ public class PhotoController {
         }
         photographerChoiceBox.setItems(PhotoLibrary.photographers);
 
+        initTable();
+
+    }
+
+    private void initTable() {
+        // Tabelle
+        photoTableView.setItems(PhotoLibrary.photos);
+        titleColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Photo, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Photo, String> photoStringCellDataFeatures) {
+                return new SimpleStringProperty(photoStringCellDataFeatures.getValue().title());
+            }
+        });
+
+        photographerColumn.setCellValueFactory((dataFeatures) -> createPhotographerName(dataFeatures.getValue().photographer()));
+
+        dateColumn.setCellValueFactory((dataFeatures) -> new SimpleObjectProperty<>(dataFeatures.getValue().date()));
+
+        sizeColumn.setCellValueFactory((dataFeatures) -> new SimpleObjectProperty<Integer>(dataFeatures.getValue().imageBytes().length));
+
+        photoTableView.getSelectionModel().selectedItemProperty().addListener((o, ov, nv) -> selectedPhoto.set(nv));
+
+        selectedPhoto.addListener((o, ov, nv) -> fillForm(nv));
+    }
+
+    private void fillForm(Photo photo) {
+
+        titleTextField.setText(photo.title());
+        photographerChoiceBox.setValue(photo.photographer());
+        datePicker.setValue(photo.date());
+        pathToFileTextField.setText(photo.pathToFile());
+        commentTextArea.setText(photo.comment());
+        imageView.setImage(new Image(new ByteArrayInputStream(photo.imageBytes())));
+    }
+
+    private ObservableValue<String> createPhotographerName(Photographer photographer) {
+        return photographer == null ? new SimpleObjectProperty<>() : new SimpleObjectProperty<>(photographer.getFirstName() + " " + photographer.getLastName());
     }
 
 
