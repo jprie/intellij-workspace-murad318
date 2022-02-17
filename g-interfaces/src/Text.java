@@ -1,15 +1,13 @@
-import java.time.chrono.Era;
-
-public class Text implements Drawable, Eraseable {
+public class Text  implements Printable, Drawable {
 
     private String content;
-    private boolean italic; // kursiv
-    private boolean bold; // fett
+    private boolean isBold;
+    private boolean isItalic;
 
-    public Text(String content, boolean italic, boolean bold) {
+    public Text(String content, boolean isBold, boolean isItalic) {
         this.content = content;
-        this.italic = italic;
-        this.bold = bold;
+        this.isBold = isBold;
+        this.isItalic = isItalic;
     }
 
     public String getContent() {
@@ -20,29 +18,34 @@ public class Text implements Drawable, Eraseable {
         this.content = content;
     }
 
-    public boolean isItalic() {
-        return italic;
-    }
-
-    public void setItalic(boolean italic) {
-        this.italic = italic;
-    }
-
     public boolean isBold() {
-        return bold;
+        return isBold;
     }
 
     public void setBold(boolean bold) {
-        this.bold = bold;
+        isBold = bold;
+    }
+
+    public boolean isItalic() {
+        return isItalic;
+    }
+
+    public void setItalic(boolean italic) {
+        isItalic = italic;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Print Text: " + content);
     }
 
     @Override
     public void draw() {
-        System.out.println("Drawing a Text: " + content);
+        System.out.println("Draw text");
     }
 
     @Override
     public void erase() {
-        System.out.println("Erasing a Text: " + content);
+        System.out.println("Erase Text");
     }
 }

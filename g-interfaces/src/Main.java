@@ -1,17 +1,32 @@
-
-
 public class Main {
 
     public static void main(String[] args) {
 
-        Text text = new Text("hello", true, false);
+        Text text = new Text("Hello", true, false);
+        Rectangle rectangle = new Rectangle(15, 30);
 
-        Circle circle = new Circle(5.0);
+        text.print();
+        rectangle.print();
 
-        Drawable dText = text;
+        Printable[] printables = new Printable[] {text, rectangle};
 
-//        Eraseable eCircle = circle;
+        for (Printable p : printables) {
 
-        Eraseable eText = text;
+            p.print();
+
+            // Auch hier bei Rectangle-Methode Überprüfung und Cast benötigt
+        }
+
+        Drawable[] drawables = new Drawable[] {text, rectangle};
+
+        for (Drawable d : drawables) {
+            d.draw();
+            // Da jedes Drawable auch Erasable sein muss!!! (extends-Beziehung)
+            d.erase();
+        }
+
+        Erasable erasable = text;
+        // ABER: nicht jedes Erasable ist auch Drawable!!!
+//        erasable.draw();
     }
 }

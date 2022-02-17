@@ -12,7 +12,9 @@
       <module fileurl="file://$PROJECT_DIR$/e-calculator/e-calculator.iml" filepath="$PROJECT_DIR$/e-calculator/e-calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/e-helloworld/e-helloworld.iml" filepath="$PROJECT_DIR$/e-helloworld/e-helloworld.iml" />
       <module fileurl="file://$PROJECT_DIR$/f-photolibrary/f-photolibrary.iml" filepath="$PROJECT_DIR$/f-photolibrary/f-photolibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/g-abstract-classes/g-abstract-classes.iml" filepath="$PROJECT_DIR$/g-abstract-classes/g-abstract-classes.iml" />
       <module fileurl="file://$PROJECT_DIR$/g-interfaces/g-interfaces.iml" filepath="$PROJECT_DIR$/g-interfaces/g-interfaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/g-simple-calculator/g-simple-calculator.iml" filepath="$PROJECT_DIR$/g-simple-calculator/g-simple-calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/g_sort-books.iml" filepath="$PROJECT_DIR$/g_sort-books.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/intellij-workspace-murad318.iml" filepath="$PROJECT_DIR$/.idea/intellij-workspace-murad318.iml" />
     </modules>
