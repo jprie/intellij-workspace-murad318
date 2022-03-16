@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/g-interfaces/g-interfaces.iml" filepath="$PROJECT_DIR$/g-interfaces/g-interfaces.iml" />
       <module fileurl="file://$PROJECT_DIR$/g-simple-calculator/g-simple-calculator.iml" filepath="$PROJECT_DIR$/g-simple-calculator/g-simple-calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/g_sort-books.iml" filepath="$PROJECT_DIR$/g_sort-books.iml" />
+      <module fileurl="file://$PROJECT_DIR$/h-strawberry-fields/h-strawberry-fields.iml" filepath="$PROJECT_DIR$/h-strawberry-fields/h-strawberry-fields.iml" />
       <module fileurl="file://$PROJECT_DIR$/intellij-workspace-murad3181.iml" filepath="$PROJECT_DIR$/intellij-workspace-murad3181.iml" />
     </modules>
   </component>

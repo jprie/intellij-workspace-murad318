@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="LoginDatabase-gx" />
         <module name="e-helloworld" />
+        <module name="h-strawberry-fields" />
         <module name="f-photolibrary" />
         <module name="e-calculator" />
       </profile>
