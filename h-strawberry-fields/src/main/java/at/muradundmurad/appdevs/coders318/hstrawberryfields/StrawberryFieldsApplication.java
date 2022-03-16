@@ -12,7 +12,7 @@ public class StrawberryFieldsApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StrawberryFieldsApplication.class.getResource(Constants.PATH_TO_GAME_VIEW_FXML));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Strawberry Fields");
         stage.setScene(scene);
         stage.show();
     }
