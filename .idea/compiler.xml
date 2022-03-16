@@ -6,14 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="f-photolibrary" />
+        <module name="LoginDatabase-gx" />
         <module name="e-helloworld" />
+        <module name="f-photolibrary" />
+        <module name="e-calculator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="e-calculator" target="17" />
       <module name="e-helloworld" target="17" />
       <module name="f-photolibrary" target="17" />
+      <module name="h-connect-four" target="17" />
+      <module name="h-strawberry-fields" target="17" />
+      <module name="LoginDatabase-gx" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
