@@ -24,7 +24,7 @@ public class Field {
 
     private void initItems() {
 
-        squares.get(10).setItem(Constants.PERSON_MALE);
+        squares.get(10).setItem(Constants.PERSON_FEMALE);
     }
 
     private void initSquares() {
