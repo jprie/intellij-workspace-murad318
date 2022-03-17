@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="LoginDatabase-gx" />
         <module name="e-helloworld" />
-        <module name="h-strawberry-fields" />
-        <module name="f-photolibrary" />
         <module name="e-calculator" />
+        <module name="LoginDatabase-gx" />
+        <module name="i_strawberry-fields" />
+        <module name="f-photolibrary" />
+        <module name="h_strawberry-fields" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,8 +19,10 @@
       <module name="e-helloworld" target="17" />
       <module name="f-photolibrary" target="17" />
       <module name="h-connect-four" target="17" />
-      <module name="h-strawberry-fields" target="17" />
+      <module name="h-strawberry-fields (1)" target="17" />
       <module name="h_strawberry-fields" target="17" />
+      <module name="i-strawberry-fields" target="17" />
+      <module name="i_strawberry-fields" target="17" />
       <module name="LoginDatabase-gx" target="17" />
     </bytecodeTargetLevel>
   </component>

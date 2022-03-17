@@ -19,8 +19,8 @@
       <module fileurl="file://$PROJECT_DIR$/g_sort-books.iml" filepath="$PROJECT_DIR$/g_sort-books.iml" />
       <module fileurl="file://$PROJECT_DIR$/h-employees/h-employees.iml" filepath="$PROJECT_DIR$/h-employees/h-employees.iml" />
       <module fileurl="file://$PROJECT_DIR$/h-simple-calculator/h-simple-calculator.iml" filepath="$PROJECT_DIR$/h-simple-calculator/h-simple-calculator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/h_strawberry-fields/h-strawberry-fields.iml" filepath="$PROJECT_DIR$/h_strawberry-fields/h-strawberry-fields.iml" />
-      <module fileurl="file://$PROJECT_DIR$/h-strawberry-fields/h_strawberry-fields.iml" filepath="$PROJECT_DIR$/h-strawberry-fields/h_strawberry-fields.iml" />
+      <module fileurl="file://$PROJECT_DIR$/h_strawberry-fields/h_strawberry-fields.iml" filepath="$PROJECT_DIR$/h_strawberry-fields/h_strawberry-fields.iml" />
+      <module fileurl="file://$PROJECT_DIR$/i_strawberry-fields/i_strawberry-fields.iml" filepath="$PROJECT_DIR$/i_strawberry-fields/i_strawberry-fields.iml" />
     </modules>
   </component>
 </project>
