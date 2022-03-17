@@ -7,6 +7,13 @@ public interface CalculatorOperation {
     // Functional Interface erlaubt nur eine zu implementierende Methode
 //    void secondMethod();
 
+
+
+
+
+
+
+
     // Beides möglich
 //    static void method() {
 //

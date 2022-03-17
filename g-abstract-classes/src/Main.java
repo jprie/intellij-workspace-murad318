@@ -23,9 +23,15 @@ public class Main {
 
             // Überprüfung: ist TaxedDog tatsächlich ein WatchDog?
 //            if (t instanceof WatchDog) {
-                WatchDog w = (WatchDog) t; // Caste (=Typumwandlung) TaxedDog auf WatchDog
-                w.barkForAlarm();
+//                WatchDog w = (WatchDog) t; // Caste (=Typumwandlung) TaxedDog auf WatchDog
+//                w.barkForAlarm();
 //            }
+
+            // Kurzschreibweise: Überprüfung + Cast (nur wenn tatsächlich ein Watchdog!)
+            if (t instanceof WatchDog w) {
+                w.barkForAlarm();
+            }
+
 
             // w ist out of scope
 //            w.barkForAlarm();

@@ -6,11 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="LoginDatabase-gx" />
-        <module name="e-helloworld" />
-        <module name="f-photolibrary" />
-        <module name="h_strawberry-fields" />
-        <module name="e-calculator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -21,16 +21,43 @@ public class Main {
             public double execute(double op1, double op2) {
                 return op1 * op2;
             }
+
+            public void anotherMethod() {
+                System.out.println("Another method");
+            }
         };
 
         double product = calculatorMultiply.execute(2.1, 4.2);
 
         // Lambda-Ausdruck
         // Auf funktionale Interfaces beschränkt!!
-        CalculatorOperation calculatorDivide = (double operator1, double operator2) -> operator1 / operator2;
+        CalculatorOperation calculatorDivide = (double operand1, double operand2) -> {
 
-        // TODO: Methoden-Referenzen nächste Woche!!
+            if (operand2 != 0) {
+                // benötigt return sobald Block-Syntax
+                return operand1 / operand2;
+            }
 
+            throw new ArithmeticException("/ by 0");
+        };
+
+        // MethodenReferenz
+        // Eingeschränkt auf Functional Interfaces
+        // MethodenSignatur von subtract und execute muss übereinstimmen.
+        CalculatorOperation calculatorSubtract = Main::subtract;
+        System.out.println(calculatorSubtract.execute(2,3));
+
+        //
+        CalculatorOperation calculatorSubtract2 = Calculator::subtract;
+
+
+        CalculatorOperation[] calculatorOperations =
+                {calculatorDivide, calculatorMultiply, calculatorSubtract, calculatorPlus};
+    }
+
+    private static double subtract(double op1, double op2) {
+
+        return op1 - op2;
     }
 
 }
