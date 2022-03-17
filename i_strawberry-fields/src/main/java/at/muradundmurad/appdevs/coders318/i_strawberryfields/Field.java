@@ -24,7 +24,7 @@ public class Field {
 
     private void initItems() {
 
-        squares.get(10).setItem(Constants.PERSON_FEMALE);
+        squares.get(10).setItem(Constants.PERSON_MALE);
     }
 
     private void initSquares() {
@@ -32,7 +32,7 @@ public class Field {
         for (int i=0; i<(Constants.NUMBER_ROWS*Constants.NUMBER_COLS); i++) {
 
             System.out.println("initSquares: " + i);
-            squares.add(new Square(Constants.PERSON_FEMALE));
+            squares.add(new Square(null));
         }
     }
 

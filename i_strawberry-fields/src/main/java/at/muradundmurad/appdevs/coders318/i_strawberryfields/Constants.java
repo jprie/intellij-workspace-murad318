@@ -15,4 +15,5 @@ public class Constants {
     public static final String PERSON_FEMALE = "P";
     public static final String PERSON_MALE = "p";
     public static final String STRAWBERRY = "s";
+
 }

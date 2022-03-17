@@ -2,7 +2,6 @@ package at.muradundmurad.appdevs.coders318.i_strawberryfields;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -67,6 +66,10 @@ public class FieldController {
                 StackPane squareView = new StackPane();
                 squareView.getStyleClass().add("square-view");
                 fieldView.add(squareView, colIndex, rowIndex);
+
+                // FIXME: Hier zu beginn updaten
+                int index = colIndex + (Constants.NUMBER_COLS)*rowIndex;
+                updateSquare(index);
             }
         }
     }
@@ -81,15 +84,20 @@ public class FieldController {
         if (fieldView.getChildren().get(index) instanceof StackPane) {
             StackPane squareView = (StackPane) fieldView.getChildren().get(index);
 
+            // imageView immer zuerst entfernen
+            squareView.getChildren().clear();
+
             // Je nachdem welches Item im Model an dieser Position liegt, wird
             // das passende Bild ausgewählt
-            Image image = imageForItem(field.getSquares().get(index).getItem());
-            ImageView imageView = new ImageView(image);
-            imageView.setPreserveRatio(true);
-            imageView.setFitHeight(50);
-
-            squareView.getChildren().clear();
-            squareView.getChildren().add(imageView);
+            String item = field.getSquares().get(index).getItem();
+            // FIXME: überprüfen ob item vorhanden
+            if (item != null) {
+                Image image = imageForItem(item);
+                ImageView imageView = new ImageView(image);
+                imageView.setPreserveRatio(true);
+                imageView.setFitHeight(50);
+                squareView.getChildren().add(imageView);
+            }
         }
     }
 
