@@ -4,6 +4,8 @@
 
 	/* JAR works!! */
 	-fx-border-color: green;
+    -fx-background-image: url('../images/grass_128px.png');
+    -fx-background-size: 100% 100%;
 }
 
 .field-view {
