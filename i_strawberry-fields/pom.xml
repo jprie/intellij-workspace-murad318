@@ -58,7 +58,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>at.muradundmurad.appdevs.coders318.i_strawberryfields/at.muradundmurad.appdevs.coders318.i_strawberryfields.StrawberryFieldsApplication</mainClass>
+              <mainClass>at.muradundmurad.appdevs.coders318.i_strawberryfields/at.muradundmurad.appdevs.coders318.i_strawberryfields.app.StrawberryFieldsApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

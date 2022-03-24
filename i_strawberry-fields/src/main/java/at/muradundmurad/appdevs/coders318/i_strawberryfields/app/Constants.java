@@ -1,4 +1,4 @@
-package at.muradundmurad.appdevs.coders318.i_strawberryfields;
+package at.muradundmurad.appdevs.coders318.i_strawberryfields.app;
 
 public class Constants {
 

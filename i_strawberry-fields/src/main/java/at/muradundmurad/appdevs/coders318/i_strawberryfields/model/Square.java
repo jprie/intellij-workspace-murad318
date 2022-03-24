@@ -1,4 +1,4 @@
-package at.muradundmurad.appdevs.coders318.i_strawberryfields;
+package at.muradundmurad.appdevs.coders318.i_strawberryfields.model;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

@@ -1,12 +1,19 @@
-package at.muradundmurad.appdevs.coders318.i_strawberryfields;
+package at.muradundmurad.appdevs.coders318.i_strawberryfields.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import at.muradundmurad.appdevs.coders318.i_strawberryfields.model.Field;
+import at.muradundmurad.appdevs.coders318.i_strawberryfields.model.Game;
+import at.muradundmurad.appdevs.coders318.i_strawberryfields.model.Square;
+import at.muradundmurad.appdevs.coders318.i_strawberryfields.app.Constants;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
@@ -23,32 +30,51 @@ public class FieldController {
     private GridPane fieldView;
 
     // Model, das die Daten liefert
-    private Field field = new Field();
+    // 1.
+    private Game game = new Game();
+    private Field field = game.getField();
 
     @FXML
     void initialize() {
         assert fieldView != null : "fx:id=\"fieldView\" was not injected: check your FXML file 'field-view.fxml'.";
 
+        // 2.
         initField();
 
+        // Jedes Mal wenn sich in einem square(im Model) das Item ändert, rufe updateSquare auf.
+        // 3.
         field.getSquares().addListener(new ListChangeListener<Square>() {
             @Override
-            public void onChanged(Change<? extends Square> c) {
+            public void onChanged(Change<? extends Square> change) {
 
-                while(c.next()) {
+                while(change.next()) {
 
-                    if (c.wasUpdated()) {
+                    if (change.wasUpdated()) {
                         // c.from() liefert index von verändertem Square
-                        System.out.println("Updated: " + c.getFrom());
-                        updateSquare(c.getFrom());
+                        System.out.println("Updated: " + change.getFrom());
+                        updateSquare(change.getFrom());
                     }
                 }
             }
         });
-//
-//        updateSquare(12);
-//
-//        updateSquare(10);
+
+        // Registriert die Methode onKeyPressed als Handler für KeyEvent.KEY_PRESSED events
+        fieldView.setOnKeyPressed(this::onKeyPressed);
+
+        // FieldView soll Fokus bekommen, erst wenn die ganze Scene erstellt wurde,
+        // damit er nicht wieder weggenommen wird!
+        // InvalidationListener verwenden, wenn nur Zeitpunkt der Änderung benötigt
+        // ChangeListener verwenden, wenn Zeitpunkt und Inhalt benötigt
+        fieldView.sceneProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                fieldView.requestFocus();
+            }
+        });
+
+        // ab dieser Zeile werden veränderte Squares updated!!
+
+        // field.getSquares().get(13).setItem(Constants.STRAWBERRY);
     }
 
     /**
@@ -59,7 +85,8 @@ public class FieldController {
         // alle statisch definierten Kindknoten entfernen
         fieldView.getChildren().clear();
 
-        for (int rowIndex=0; rowIndex<Constants.NUMBER_ROWS; rowIndex++) {
+        int index = 0;
+        for (int rowIndex = 0; rowIndex< Constants.NUMBER_ROWS; rowIndex++) {
 
             for (int colIndex=0; colIndex<Constants.NUMBER_COLS; colIndex++) {
 
@@ -68,8 +95,8 @@ public class FieldController {
                 fieldView.add(squareView, colIndex, rowIndex);
 
                 // FIXME: Hier zu beginn updaten
-                int index = colIndex + (Constants.NUMBER_COLS)*rowIndex;
-                updateSquare(index);
+                //int index = colIndex + (Constants.NUMBER_COLS)*rowIndex;
+                updateSquare(index++);
             }
         }
     }
@@ -117,6 +144,17 @@ public class FieldController {
         };
 
         return new Image(getClass().getResourceAsStream(path));
+    }
+
+    /**
+     * EventHandler für KeyEvents
+     */
+    private void onKeyPressed(KeyEvent keyEvent) {
+
+        System.out.println("Taste gedrückt:" + keyEvent.getCode());
+
+        // Information, welche Taste gedrückt wurde ans Model kommunizieren
+        game.handleKeyPressed(keyEvent.getCode());
     }
 
 }
